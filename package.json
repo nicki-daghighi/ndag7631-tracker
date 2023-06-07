@@ -1,0 +1,11 @@
+{
+  "name": "ndag7631-tracker",
+  "version": "1.0.0",
+  "description": "BakeBook is a web application used to assist bakers in tracking their recipes in an online format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicki Daghighi",
+  "license": "ISC"
+}

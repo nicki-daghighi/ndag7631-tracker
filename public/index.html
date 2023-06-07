@@ -1,135 +1,147 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>BakeBook</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* CSS styles for the recipe logger website */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #569899;
-      margin: 0;
-      padding: 0;
-    }
+    <title>BakeBook</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS styles for the recipe logger website */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #569899;
+            margin: 0;
+            padding: 0;
+        }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    header {
-      text-align: left;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-    }
+        header {
+            text-align: left;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
 
-    header img {
-      width: 40px;
-      margin-right: 10px;
-    }
+        header img {
+            width: 40px;
+            margin-right: 10px;
+        }
 
-    h1 {
-      color: #ffffff; /* Teal color */
-      margin: 0;
-      padding: 20px 0;
-    }
+        h1 {
+            color: #ffffff;
+            /* Teal color */
+            margin: 0;
+            padding: 20px 0;
+        }
 
-    h2 {
-      color: white;
-      margin: 0;
-      padding: 20px 0;
-    }
+        h2 {
+            color: white;
+            margin: 0;
+            padding: 20px 0;
+        }
 
-    /* Rest of the CSS styles remain the same */
-    /* ... */
-  </style>
+        .recipe-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .recipe-item img {
+            width: 40px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <img src="images/bakery.png" alt="BakeBook Logo">
-      <h1>BakeBook</h1>
-    </header>
-    <section class="recipe-form">
-      <h2>Add a Recipe</h2>
-      <div class="form-group">
-        <label for="recipe-title">Recipe Name</label>
-        <input type="text" id="recipe-title" placeholder="Recipe Title">
-      </div>
-      <div class="form-group">
-        <label for="recipe-category">Recipe Category</label>
-        <select id="recipe-category">
-          <option value="Bread">Bread</option>
-          <option value="Cookie">Cookie</option>
-          <option value="Cake">Cake</option>
-          <option value="Pie">Pie</option>
-          <option value="Pastry">Pastry</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Log Recipe" onclick="logRecipe()">
-      </div>
-    </section>
-    <section class="recipe-list">
-      <h2>Your Recipes</h2>
-      <ul id="logged-recipes"></ul>
-    </section>
-  </div>
+    <div class="container">
+        <header>
+            <img src="images/bakery.png" alt="BakeBook Logo">
+            <h1>BakeBook</h1>
+        </header>
+        <section class="recipe-form">
+            <h2>Add a Recipe</h2>
+            <div class="form-group">
+                <label for="recipe-title">Recipe Name</label>
+                <input type="text" id="recipe-title" placeholder="Recipe Title">
+            </div>
+            <div class="form-group">
+                <label for="recipe-category">Recipe Category</label>
+                <select id="recipe-category">
+                    <option value="Bread">Bread</option>
+                    <option value="Cookie">Cookie</option>
+                    <option value="Cake">Cake</option>
+                    <option value="Pie">Pie</option>
+                    <option value="Pastry">Pastry</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Log Recipe" onclick="logRecipe()">
+            </div>
+        </section>
+        <section class="recipe-list">
+            <h2>Your Recipes</h2>
+            <ul id="logged-recipes"></ul>
+        </section>
+    </div>
 
-  <script>
-    // JavaScript code for logging recipes
-    function logRecipe() {
-      var recipeTitle = document.getElementById("recipe-title").value;
-      var recipeCategory = document.getElementById("recipe-category").value;
+    <script>
+        // JavaScript code for logging recipes
+        function logRecipe() {
+            var recipeTitle = document.getElementById("recipe-title").value;
+            var recipeCategory = document.getElementById("recipe-category").value;
 
-      var recipeItem = document.createElement("li");
-      var titleElement = document.createElement("h3");
-      var categoryElement = document.createElement("p");
-      var deleteButton = document.createElement("button");
-      var categoryImage = document.createElement("img");
+            var recipeItem = document.createElement("li");
+            var titleElement = document.createElement("h3");
+            var categoryElement = document.createElement("p");
+            var deleteButton = document.createElement("button");
+            var categoryImage = document.createElement("img");
 
-      titleElement.textContent = recipeTitle;
-      categoryElement.textContent = "Category: " + recipeCategory;
-      deleteButton.textContent = "Delete";
-      deleteButton.addEventListener("click", function () {
-        deleteRecipe(this.parentNode);
-      });
+            titleElement.textContent = recipeTitle;
+            categoryElement.textContent = "Category: " + recipeCategory;
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", function () {
+                deleteRecipe(this.parentNode);
+            });
 
-      // Set the image source based on the recipe category
-      if (recipeCategory === "Bread") {
-        categoryImage.src = "images/bread.png";
-      } else if (recipeCategory === "Cookie") {
-        categoryImage.src = "images/cookie.png";
-      } else if (recipeCategory === "Cake") {
-        categoryImage.src = "images/cake.png";
-      } else if (recipeCategory === "Pie") {
-        categoryImage.src = "images/pie.png";
-      } else if (recipeCategory === "Pastry") {
-        categoryImage.src = "images/pastry.png";
-      } else if (recipeCategory == "Other") {
-        categoryImage.src = "images/other.png";
-      }
+            // Set the image source based on the recipe category
+            if (recipeCategory === "Bread") {
+                categoryImage.src = "images/bread.png";
+            } else if (recipeCategory === "Cookie") {
+                categoryImage.src = "images/cookie.png";
+            } else if (recipeCategory === "Cake") {
+                categoryImage.src = "images/cake.png";
+            } else if (recipeCategory === "Pie") {
+                categoryImage.src = "images/pie.png";
+            } else if (recipeCategory === "Pastry") {
+                categoryImage.src = "images/pastry.png";
+            } else if (recipeCategory == "Other") {
+                categoryImage.src = "images/other.png";
+            }
 
-      recipeItem.appendChild(categoryImage);
-      recipeItem.appendChild(titleElement);
-      recipeItem.appendChild(categoryElement);
-      recipeItem.appendChild(deleteButton);
+            recipeItem.appendChild(categoryImage);
+            recipeItem.appendChild(titleElement);
+            recipeItem.appendChild(categoryElement);
+            recipeItem.appendChild(deleteButton);
 
-      document.getElementById("logged-recipes").appendChild(recipeItem);
+            document.getElementById("logged-recipes").appendChild(recipeItem);
 
-      // Clear the form inputs after logging the recipe
-      document.getElementById("recipe-title").value = "";
-      document.getElementById("recipe-category").value = "bread";
-    }
+            // Clear the form inputs after logging the recipe
+            document.getElementById("recipe-title").value = "";
+            document.getElementById("recipe-category").value = "bread";
+        }
 
-    // Function to delete a recipe
-    function deleteRecipe(recipeItem) {
-      recipeItem.parentNode.removeChild(recipeItem);
-    }
-  </script>
+        // Function to delete a recipe
+        function deleteRecipe(recipeItem) {
+            recipeItem.parentNode.removeChild(recipeItem);
+        }
+    </script>
 </body>
+
 </html>
 

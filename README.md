@@ -47,7 +47,7 @@ These are the resources used to create BakeBook:
 3. https://www.w3schools.com/css/css_list.asp for how to style lists.
 4. https://www.youtube.com/watch?v=apbP9NNOD1M to help basics of web applications. 
 5. https://www.youtube.com/watch?v=mkLbp0msvbI web application coding help.
-
+6. The HTML and CSS code has been proofread by Open AI https://openai.com/ as the first repo for the project was corrupted (AI used to identify and remove errors) and to re-order, tidy and get rid of useless / repetative code. 
 
 
 

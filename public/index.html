@@ -4,17 +4,127 @@
   <title>BakeBook</title>
   <link rel="stylesheet" href="style.css">
   <style>
-       body {
-        font-family: sans-serif;
-        }
+    /* CSS styles for the recipe logger website */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #569899;
+      margin: 0;
+      padding: 0;
+    }
 
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: left;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: #ffffff; /* Teal color */
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    h2 {
+      color: white;
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    .recipe-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .recipe-form h2 {
+      color: #008080; /* Teal color */
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #008080; /* Teal color */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .recipe-list {
+      margin-bottom: 20px;
+    }
+
+    .recipe-item {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .recipe-item:hover {
+      background-color: #f1f7f9; /* Light teal background */
+    }
+
+    .recipe-details {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #008080; /* Teal color */
+      border-radius: 4px;
+    }
+
+    .recipe-item.active .recipe-details {
+      display: block;
+    }
+
+    .recipe-item .delete-btn {
+      float: right;
+      margin-left: 10px;
+      color: #ff0000;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>BakeBook</h1>
-    </header>
+    <div class="container">
+        <header>
+          <img src="images/bakery.png" alt="BakeBook Logo">
+          <h1>BakeBook</h1>
+        </header>
     <section class="recipe-form">
       <h2>Add a Recipe</h2>
       <div class="form-group">
@@ -44,11 +154,18 @@
       var recipeItem = document.createElement("li");
       var titleElement = document.createElement("h3");
       var descriptionElement = document.createElement("p");
+      var deleteButton = document.createElement("span");
 
       titleElement.textContent = recipeTitle;
       descriptionElement.textContent = recipeDescription;
+      deleteButton.innerHTML = "&times;";
+      deleteButton.className = "delete-btn";
+      deleteButton.onclick = function() {
+        deleteRecipe(this);
+      };
 
       recipeItem.appendChild(titleElement);
+      recipeItem.appendChild(deleteButton);
       recipeItem.appendChild(descriptionElement);
 
       document.getElementById("logged-recipes").appendChild(recipeItem);
@@ -56,6 +173,13 @@
       // Clear the form inputs after logging the recipe
       document.getElementById("recipe-title").value = "";
       document.getElementById("recipe-description").value = "";
+    }
+
+    // Function to delete a recipe
+    function deleteRecipe(deleteButton) {
+      var recipeItem = deleteButton.parentNode;
+      var recipeList = recipeItem.parentNode;
+      recipeList.removeChild(recipeItem);
     }
   </script>
 </body>

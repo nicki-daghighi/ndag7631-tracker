@@ -35,6 +35,11 @@ body {
     margin: 0;
     padding: 20px 0;
   }
+
+  body img {
+    width: 70px;
+    margin-right: 10px;
+  }
   
   .recipe-form {
     background-color: #fff;
@@ -48,6 +53,28 @@ body {
     color: #008080; /* Teal color */
   }
   
+  .recipe-list {
+    background-color: #003333; /* Dark Teal color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .recipe-list h2 {
+    color: #ffffff; /* White color */
+  }
+
+  .recipe-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .recipe-list li {
+    color: #ffffff; /* White color */
+    margin-bottom: 10px;
+  }
+
   .form-group {
     margin-bottom: 15px;
   }
